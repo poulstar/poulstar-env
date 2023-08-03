@@ -6,7 +6,7 @@ from typing_extensions import Annotated
 app = typer.Typer(pretty_exceptions_show_locals=False)
 
 
-@app.command(help="Export your lists.")
+@app.command(help="Put your logo on the images.")
 def logo(
     output: Annotated[Path, typer.Argument()] = "output_image.png",
     background: Path = typer.Option(...),

@@ -2,7 +2,7 @@
 name = "poulstar"
 version = "0.1.0"
 description = ""
-authors = ["alirezaaraby <alirezaaraby5@gmail.com>"]
+authors = ["AlirezaArabi <alirezaaraby5@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.scripts]
