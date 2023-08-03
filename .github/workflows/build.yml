@@ -114,7 +114,7 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./ubuntu-latest-x64/*.whl
-          asset_name: ubuntu-v${{ github.run_number }}.zip
+          asset_name: ubuntu.zip
           asset_content_type: application/zip
           
       - name: Upload Windows asset to GitHub release
@@ -124,7 +124,7 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./windows-latest-x64/*.whl
-          asset_name: windows-v${{ github.run_number }}.zip
+          asset_name: windows.zip
           asset_content_type: application/zip
 
       - name: Upload Mac asset to GitHub release
@@ -134,5 +134,5 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./macos-latest-x64/*.whl
-          asset_name: macos-v${{ github.run_number }}.zip
+          asset_name: macos.zip
           asset_content_type: application/zip
