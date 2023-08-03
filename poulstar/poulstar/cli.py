@@ -1,6 +1,6 @@
 import typer
 from pathlib import Path
-from logo import merge_images
+from . import logo
 from typing_extensions import Annotated
 
 app = typer.Typer(pretty_exceptions_show_locals=False)
@@ -44,7 +44,7 @@ def logo(
     cm = center/middle
     """
     )
-    merge_images(
+    logo.merge_images(
         background_path=background,
         overlay_path=overlay,
         output_path=output,
