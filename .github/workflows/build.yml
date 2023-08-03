@@ -106,32 +106,33 @@ jobs:
       - name: Show Dir
         run: |
           ls -R
-    #   - name: Upload ubuntu asset to GitHub release
-    #     uses: actions/upload-release-asset@v1
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.TOKEN }}
-    #     with:
-    #       upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-    #       asset_path: ./ubuntu-latest/output.zip
-    #       asset_name: ubuntu-v${{ github.run_number }}.zip
-    #       asset_content_type: application/zip
+          
+      - name: Upload ubuntu asset to GitHub release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./ubuntu-latest-x64/*.whl
+          asset_name: ubuntu-v${{ github.run_number }}.zip
+          asset_content_type: application/zip
+          
+      - name: Upload Windows asset to GitHub release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./windows-latest-x64/*.whl
+          asset_name: windows-v${{ github.run_number }}.zip
+          asset_content_type: application/zip
 
-    #   - name: Upload Windows asset to GitHub release
-    #     uses: actions/upload-release-asset@v1
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.TOKEN }}
-    #     with:
-    #       upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-    #       asset_path: ./windows-latest/output.zip
-    #       asset_name: windows-v${{ github.run_number }}.zip
-    #       asset_content_type: application/zip
-
-    #   - name: Upload Mac asset to GitHub release
-    #     uses: actions/upload-release-asset@v1
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.TOKEN }}
-    #     with:
-    #       upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-    #       asset_path: ./macos-latest/output.zip
-    #       asset_name: macos-v${{ github.run_number }}.zip
-    #       asset_content_type: application/zip
+      - name: Upload Mac asset to GitHub release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./macos-latest-x64/*.whl
+          asset_name: macos-v${{ github.run_number }}.zip
+          asset_content_type: application/zip
