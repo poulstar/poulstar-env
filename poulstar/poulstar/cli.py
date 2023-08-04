@@ -1,7 +1,8 @@
 import typer
 from pathlib import Path
-from poulstar.logo import merge_images
 from typing_extensions import Annotated
+
+from . import logo as merge
 
 app = typer.Typer(pretty_exceptions_show_locals=False)
 
@@ -44,7 +45,7 @@ def logo(
     cm = center/middle
     """
     )
-    logo.merge_images(
+    merge.merge_images(
         background_path=background,
         overlay_path=overlay,
         output_path=output,
