@@ -1,4 +1,4 @@
-name: Build
+name: Main
 on: workflow_dispatch
 jobs:
   windows:
@@ -110,6 +110,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ubuntu, windows, mac]
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      
+      - name: Install toml
+        run: |
+          pip install toml
+      - name: Check pypi versions
+        id: versioncheck
+        run: python .github/workflows/version.py
       - uses: actions/download-artifact@v3
 
       - name: Create GitHub release
@@ -119,10 +130,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-      - name: Show Dir
-        run: |
-          ls -R
+          release_name: "Version ${{ steps.versioncheck.outputs.version }}"
           
       - name: Upload ubuntu asset to GitHub release
         uses: actions/upload-release-asset@v1
