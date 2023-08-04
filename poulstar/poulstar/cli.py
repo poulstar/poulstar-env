@@ -1,6 +1,6 @@
 import typer
 from pathlib import Path
-from . import logo
+from poulstar.logo import merge_images
 from typing_extensions import Annotated
 
 app = typer.Typer(pretty_exceptions_show_locals=False)
